@@ -1,0 +1,50 @@
+name: "🚀 Deploy para Hostinger"
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "📥 Checkout código"
+        uses: actions/checkout@v4
+
+      - name: "📦 Preparar arquivos"
+        run: |
+          echo "📁 Preparando arquivos para deploy..."
+          echo "📄 Arquivos encontrados:"
+          ls -la
+
+      - name: "🚀 Deploy via FTP"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
+            **/README.md
+            **/.env*
+            **/.DS_Store
+            **/Thumbs.db
+            **/setup-repo.sh
+            **/DEPLOY_CONFIG.md
+
+      - name: "✅ Deploy concluído"
+        run: |
+          echo "🎉 Deploy realizado com sucesso!"
+          echo "🌐 Verifique sua hospedagem Hostinger (diretório /public_html)."
+          echo "🔎 Caso use subdomínio ou pasta diferente, ajuste 'server-dir'."
+
+
