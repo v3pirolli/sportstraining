@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPORTS TRAINING - Centro de Treinamento Funcional</title>
+    <meta name="description" content="Centro de treinamento funcional em Caxias do Sul. Treinamento personalizado, aulas em grupo e produtos digitais para evolução sem lesões. Agende sua aula experimental!">
+    <meta name="keywords" content="treinamento funcional Caxias do Sul, academia Caxias do Sul, personal trainer, treino funcional, exercícios funcionais, fitness Caxias do Sul">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -22,6 +24,7 @@
                     <li><a href="#about">Sobre</a></li>
                     <li><a href="#services">Serviços</a></li>
                     <li><a href="#products">Produtos</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
                 <div class="hamburger">
@@ -33,8 +36,9 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Transforme sua vida com <span class="highlight">SPORTS TRAINING</span></h1>
@@ -45,9 +49,81 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="hero-placeholder">
-                    <i class="fas fa-dumbbell"></i>
+                <picture>
+                    <source srcset="assets/treino-dumbbell-1.webp" type="image/webp">
+                    <img src="assets/treino-dumbbell-1.jpg" alt="aluna realizando remo com halteres na SPORTS TRAINING em Caxias do Sul" loading="lazy">
+                </picture>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section id="instagram" class="instagram">
+        <div class="container">
+            <div class="section-header">
+                <h2>No Instagram</h2>
+                <p>Siga <a href="https://www.instagram.com/sportstrainingct/" target="_blank">@sportstrainingct</a> para ver treinos, bastidores e resultados.</p>
+            </div>
+
+            <!-- Instagram Feed Container -->
+            <div class="instagram-feed-container">
+                <div class="instagram-grid" id="instagramGrid">
+                    <!-- Loading state -->
+                    <div class="instagram-loading">
+                        <div class="loading-spinner"></div>
+                        <p>Carregando posts do Instagram...</p>
+                    </div>
                 </div>
+
+                <!-- Fallback content when Instagram API is not available -->
+                <div class="instagram-fallback" id="instagramFallback" style="display: none;">
+                    <div class="instagram-grid">
+                        <div class="instagram-post-card">
+                            <div class="post-image">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div class="post-content">
+                                <p>Treinos funcionais que transformam vidas! 💪</p>
+                                <div class="post-meta">
+                                    <span class="post-date">Há 2 dias</span>
+                                    <span class="post-likes">❤️ 45</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="instagram-post-card">
+                            <div class="post-image">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="post-content">
+                                <p>Aulas em grupo com foco na técnica e segurança! 🏋️‍♀️</p>
+                                <div class="post-meta">
+                                    <span class="post-date">Há 5 dias</span>
+                                    <span class="post-likes">❤️ 32</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="instagram-post-card">
+                            <div class="post-image">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="post-content">
+                                <p>Resultados reais de nossos alunos! 🎯</p>
+                                <div class="post-meta">
+                                    <span class="post-date">Há 1 semana</span>
+                                    <span class="post-likes">❤️ 67</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instagram-cta">
+                <a href="https://www.instagram.com/sportstrainingct/" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-instagram"></i> Ver mais no Instagram
+                </a>
             </div>
         </div>
     </section>
@@ -56,12 +132,12 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2>Sobre o SPORTS TRAINING</h2>
+                <h1>Sobre o SPORTS TRAINING</h1>
                 <p>Mais de 5 anos transformando vidas através do treinamento funcional</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Nossa Missão</h3>
+                    <h2>Nossa Missão</h2>
                     <p>Oferecer treinamento funcional de alta qualidade, promovendo saúde, bem-estar e resultados duradouros sem causar lesões. Combinamos experiência prática com conhecimento teórico através de nossos produtos digitais.</p>
                     
                     <div class="stats">
@@ -80,9 +156,10 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <div class="about-placeholder">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
+                    <picture>
+                        <source srcset="assets/equipe-ct-1.webp" type="image/webp">
+                        <img src="assets/equipe-ct-1.jpg" alt="professores da SPORTS TRAINING no centro de treinamento em Caxias do Sul" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -92,7 +169,7 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2>Nossos Serviços</h2>
+                <h1>Nossos Serviços</h1>
                 <p>Modalidades especializadas para todos os níveis</p>
             </div>
             <div class="services-grid">
@@ -100,7 +177,7 @@
                     <div class="service-icon">
                         <i class="fas fa-dumbbell"></i>
                     </div>
-                    <h3>Treinamento Funcional</h3>
+                    <h2>Treinamento Funcional</h2>
                     <p>Aulas em grupo focadas em movimentos naturais e funcionais para o dia a dia.</p>
                     <ul>
                         <li>Aulas em grupos pequenos</li>
@@ -113,7 +190,7 @@
                     <div class="service-icon">
                         <i class="fas fa-user-friends"></i>
                     </div>
-                    <h3>Personal Training</h3>
+                    <h2>Personal Training</h2>
                     <p>Treinamento individualizado com acompanhamento personalizado.</p>
                     <ul>
                         <li>Avaliação física completa</li>
@@ -126,7 +203,7 @@
                     <div class="service-icon">
                         <i class="fas fa-book"></i>
                     </div>
-                    <h3>E-books & Cursos</h3>
+                    <h2>E-books & Cursos</h2>
                     <p>Conhecimento especializado para você aplicar em casa ou na academia.</p>
                     <ul>
                         <li>Guias de exercícios</li>
@@ -142,8 +219,8 @@
     <section id="products" class="products">
         <div class="container">
             <div class="section-header">
-                <h2>Produtos Digitais</h2>
-                <p>Leve o conhecimento do Zero Dor para onde você estiver</p>
+                <h1>Produtos Digitais</h1>
+                <p>Leve o conhecimento do SPORTS TRAINING para onde você estiver</p>
             </div>
             <div class="products-grid">
                 <div class="product-card featured">
@@ -151,7 +228,7 @@
                     <div class="product-image">
                         <i class="fas fa-book-open"></i>
                     </div>
-                    <h3>Guia Completo de Treinamento Funcional</h3>
+                    <h2>Guia Completo de Treinamento Funcional</h2>
                     <p class="product-description">E-book com 50 exercícios funcionais, progressões e adaptações para todos os níveis.</p>
                     <div class="product-features">
                         <ul>
@@ -174,7 +251,7 @@
                     <div class="product-image">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3>Curso Online: Prevenção de Lesões</h3>
+                    <h2>Curso Online: Prevenção de Lesões</h2>
                     <p class="product-description">Curso completo sobre como evitar lesões e treinar com segurança.</p>
                     <div class="product-features">
                         <ul>
@@ -196,7 +273,7 @@
                     <div class="product-image">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>App de Treinos em Casa</h3>
+                    <h2>App de Treinos em Casa</h2>
                     <p class="product-description">Aplicativo com treinos funcionais para fazer em casa sem equipamentos.</p>
                     <div class="product-features">
                         <ul>
@@ -277,7 +354,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Entre em Contato</h2>
+                <h1>Entre em Contato</h1>
                 <p>Agende sua aula experimental ou tire suas dúvidas</p>
             </div>
             <div class="contact-content">
@@ -288,7 +365,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>Endereço</h4>
-                            <p>Rua das Flores, 123<br>Centro - Sua Cidade/SP</p>
+                            <p>Rua Julio de Castilhos, 3804<br>Centro - Caxias do Sul/RS</p>
                         </div>
                     </div>
 
@@ -298,7 +375,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>Telefone</h4>
-                            <p>(11) 99999-9999</p>
+                            <p>(54) 992855700</p>
                         </div>
                     </div>
 
@@ -308,7 +385,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>Email</h4>
-                            <p>contato@zerodor.com.br</p>
+                            <p>contato@sportstraining.com.br</p>
                         </div>
                     </div>
 
@@ -324,17 +401,24 @@
                 </div>
 
                 <div class="contact-form-container">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" novalidate>
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                            <label for="name" class="form-label">Nome Completo *</label>
+                            <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required>
+                            <div class="error-message" id="name-error"></div>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Seu email" required>
+                            <label for="email" class="form-label">E-mail *</label>
+                            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                            <div class="error-message" id="email-error"></div>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Seu telefone">
+                            <label for="phone" class="form-label">Telefone *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(54) 99999-9999" required>
+                            <div class="error-message" id="phone-error"></div>
                         </div>
                         <div class="form-group">
+                            <label for="interest" class="form-label">Interesse *</label>
                             <select id="interest" name="interest" required>
                                 <option value="">Selecione seu interesse</option>
                                 <option value="aula-experimental">Aula Experimental</option>
@@ -342,14 +426,45 @@
                                 <option value="produtos-digitais">Produtos Digitais</option>
                                 <option value="outros">Outros</option>
                             </select>
+                            <div class="error-message" id="interest-error"></div>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Sua mensagem" rows="5"></textarea>
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos mais sobre seu interesse..." rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
                             <i class="fas fa-paper-plane"></i> Enviar Mensagem
                         </button>
+                        <div class="form-success" id="formSuccess" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
+                        </div>
                     </form>
+                </div>
+            </div>
+            
+            <!-- Google Maps -->
+            <div class="map-container">
+                <h3>Nossa Localização</h3>
+                <div class="map-wrapper">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3476.1234567890!2d-51.1791234!3d-29.1654321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951ea2a2a2a2a2a2%3A0x2a2a2a2a2a2a2a2a!2sRua%20Julio%20de%20Castilhos%2C%203804%20-%20Centro%2C%20Caxias%20do%20Sul%20-%20RS!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localização da SPORTS TRAINING em Caxias do Sul">
+                    </iframe>
+                </div>
+                <div class="map-links">
+                    <a href="https://maps.google.com/?q=Rua+Julio+de+Castilhos,+3804,+Centro,+Caxias+do+Sul,+RS" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-map-marker-alt"></i> Ver no Google Maps
+                    </a>
+                    <a href="https://www.google.com/maps/dir//Rua+Julio+de+Castilhos,+3804,+Centro,+Caxias+do+Sul,+RS" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-route"></i> Como Chegar
+                    </a>
                 </div>
             </div>
         </div>
@@ -360,18 +475,50 @@
         <div class="container">
             <div class="newsletter-content">
                 <div class="newsletter-text">
-                    <h3>Receba dicas exclusivas!</h3>
+                    <h2>Receba dicas exclusivas!</h2>
                     <p>Inscreva-se na nossa newsletter e receba conteúdo gratuito sobre treinamento funcional e prevenção de lesões.</p>
+                    <div class="newsletter-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-check"></i>
+                            <span>Dicas de treino semanais</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check"></i>
+                            <span>Receitas fitness exclusivas</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check"></i>
+                            <span>Promoções especiais</span>
+                        </div>
+                    </div>
                 </div>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Seu melhor email" required>
-                    <button type="submit" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i> Inscrever-se
-                    </button>
-                </form>
+                <div class="newsletter-form-container">
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <div class="form-group">
+                            <label for="newsletterEmail" class="form-label">E-mail *</label>
+                            <input type="email" id="newsletterEmail" name="email" placeholder="Digite seu melhor e-mail" required>
+                            <div class="error-message" id="newsletter-email-error"></div>
+                        </div>
+                        <button type="submit" class="btn btn-secondary" id="newsletterSubmitBtn">
+                            <i class="fas fa-envelope"></i> Inscrever-se
+                        </button>
+                        <div class="newsletter-success" id="newsletterSuccess" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Inscrição realizada com sucesso! Verifique seu e-mail para confirmar.</p>
+                        </div>
+                        <div class="newsletter-error" id="newsletterError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Erro ao realizar inscrição. Tente novamente.</p>
+                        </div>
+                    </form>
+                    <div class="newsletter-privacy">
+                        <p><i class="fas fa-shield-alt"></i> Seus dados estão seguros. Não enviamos spam.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -379,7 +526,7 @@
             <div class="footer-content">
                     <div class="footer-section">
                         <div class="logo">
-                            <h3>SPORTS TRAINING</h3>
+                            <h2>SPORTS TRAINING</h2>
                             <span>Centro de Treinamento</span>
                         </div>
                     <p>Transformando vidas através do treinamento funcional seguro e eficiente.</p>
@@ -398,6 +545,7 @@
                         <li><a href="#about">Sobre</a></li>
                         <li><a href="#services">Serviços</a></li>
                         <li><a href="#products">Produtos</a></li>
+                        <li><a href="#instagram">Instagram</a></li>
                     </ul>
                 </div>
 
@@ -414,9 +562,9 @@
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <ul>
-                        <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
-                        <li><i class="fas fa-envelope"></i> contato@zerodor.com.br</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Rua das Flores, 123</li>
+                        <li><i class="fas fa-phone"></i> (54) 992855700</li>
+                        <li><i class="fas fa-envelope"></i> contato@sportstraining.com.br</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua Julio de Castilhos, 3804 - Centro</li>
                     </ul>
                 </div>
             </div>
@@ -435,5 +583,77 @@
     </div>
 
     <script src="script.js"></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Instagram embed script -->
+    <script async src="https://www.instagram.com/embed.js"></script>
+
+    <!-- Dynamic Meta Tags Script -->
+    <script>
+        // Meta tags configuration for each section
+        const metaConfig = {
+            'home': {
+                title: 'SPORTS TRAINING - Centro de Treinamento Funcional em Caxias do Sul',
+                description: 'Centro de treinamento funcional em Caxias do Sul. Treinamento personalizado, aulas em grupo e produtos digitais para evolução sem lesões. Agende sua aula experimental!'
+            },
+            'about': {
+                title: 'Sobre Nós - SPORTS TRAINING Caxias do Sul | Treinamento Funcional',
+                description: 'Conheça o SPORTS TRAINING em Caxias do Sul. Centro especializado em treinamento funcional com profissionais qualificados e metodologia inovadora para resultados seguros.'
+            },
+            'services': {
+                title: 'Serviços - Treinamento Funcional em Caxias do Sul | SPORTS TRAINING',
+                description: 'Serviços de treinamento funcional em Caxias do Sul: aulas personalizadas, treino em grupo, avaliação física e acompanhamento nutricional. Resultados garantidos!'
+            },
+            'products': {
+                title: 'Produtos Digitais - E-books e Cursos | SPORTS TRAINING',
+                description: 'Produtos digitais de treinamento funcional: e-books, cursos online e guias especializados. Evolua seu treino em qualquer lugar com conteúdo exclusivo.'
+            },
+            'contact': {
+                title: 'Contato - SPORTS TRAINING Caxias do Sul | Agende sua Aula',
+                description: 'Entre em contato com o SPORTS TRAINING em Caxias do Sul. Agende sua aula experimental gratuita e transforme sua vida com treinamento funcional de qualidade.'
+            }
+        };
+
+        // Function to update meta tags
+        function updateMetaTags(sectionId) {
+            const config = metaConfig[sectionId];
+            if (config) {
+                document.title = config.title;
+                const metaDescription = document.querySelector('meta[name="description"]');
+                if (metaDescription) {
+                    metaDescription.setAttribute('content', config.description);
+                }
+            }
+        }
+
+        // Intersection Observer to detect which section is in view
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    updateMetaTags(sectionId);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = ['home', 'about', 'services', 'products', 'contact'];
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    observer.observe(section);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -91,14 +91,35 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.hamburger:hover {
+    background: rgba(220, 38, 38, 0.1);
 }
 
 .hamburger span {
-    width: 25px;
+    width: 28px;
     height: 3px;
     background: #333;
     margin: 3px 0;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Hero Section */
@@ -617,6 +638,113 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Form Labels */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+/* Error States */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* Error Messages */
+.error-message {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: none;
+    font-weight: 500;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+/* Success Message */
+.form-success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideInUp 0.3s ease;
+}
+
+.form-success i {
+    color: #28a745;
+    font-size: 1.2rem;
+}
+
+.form-success p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Loading State */
+.btn.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Form Validation Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Phone Input Mask */
+input[type="tel"] {
+    font-family: 'Courier New', monospace;
+}
+
+/* Required Field Indicator */
+.form-label:not([for="message"])::after {
+    content: ' *';
+    color: #dc2626;
+    font-weight: bold;
 }
 
 .form-group textarea {
@@ -626,45 +754,217 @@ body {
 
 /* Newsletter Section */
 .newsletter {
-    padding: 4rem 0;
+    padding: 6rem 0;
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #dc2626 100%);
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 .newsletter-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
-.newsletter-text h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+.newsletter-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .newsletter-text p {
+    font-size: 1.1rem;
     opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.newsletter-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+}
+
+.benefit-item i {
+    color: #28a745;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.newsletter-form-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .newsletter-form {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.newsletter-form .form-group {
+    margin-bottom: 0;
+}
+
+.newsletter-form .form-label {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
 }
 
 .newsletter-form input {
-    flex: 1;
-    min-width: 250px;
-    padding: 1rem;
-    border: none;
-    border-radius: 50px;
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
     font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .newsletter-form input:focus {
     outline: none;
+    border-color: #ff6b35;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+
+.newsletter-form input.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+.newsletter-form input.success {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+.newsletter-form .btn {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-form .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+}
+
+.newsletter-form .btn:active {
+    transform: translateY(0);
+}
+
+.newsletter-form .btn.loading {
+    color: transparent;
+    pointer-events: none;
+}
+
+.newsletter-form .btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.newsletter-success,
+.newsletter-error {
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    animation: slideInUp 0.3s ease;
+}
+
+.newsletter-success {
+    background: rgba(40, 167, 69, 0.2);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #28a745;
+}
+
+.newsletter-error {
+    background: rgba(220, 53, 69, 0.2);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #dc3545;
+}
+
+.newsletter-success i,
+.newsletter-error i {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.newsletter-success p,
+.newsletter-error p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.newsletter-privacy {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.newsletter-privacy p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.newsletter-privacy i {
+    color: #28a745;
 }
 
 /* Footer */
@@ -773,7 +1073,46 @@ body {
     transform: scale(1.1);
 }
 
-/* Responsive Design */
+/* Tablet Styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -782,129 +1121,471 @@ body {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 80px;
         flex-direction: column;
-        background-color: white;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         padding: 2rem 0;
+        z-index: 1000;
+        border-top: 1px solid rgba(220, 38, 38, 0.1);
     }
 
     .nav-menu.active {
         left: 0;
     }
 
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        margin: 0 1rem;
+    }
+
+    .nav-menu a:hover {
+        background: rgba(220, 38, 38, 0.1);
+        color: #dc2626;
+        transform: translateX(5px);
+    }
+
+    .nav-menu a::after {
+        display: none;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 2rem;
+        padding: 0 1rem;
     }
 
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-buttons {
         justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
     }
 
     .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .stats {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .stat h4 {
+        font-size: 2rem;
     }
 
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .contact-form-container {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 
     .newsletter-content {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 2rem;
         text-align: center;
+        padding: 0 1rem;
     }
 
-    .newsletter-form {
-        width: 100%;
-        justify-content: center;
+    .newsletter-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
     }
 
-    .newsletter-form input {
-        min-width: 100%;
+    .newsletter-text p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
-    .hero-placeholder,
-    .about-placeholder {
-        width: 250px;
-        height: 250px;
+    .newsletter-form-container {
+        padding: 1.5rem;
+        margin: 0 1rem;
     }
 
-    .hero-placeholder i {
-        font-size: 4rem;
+    .newsletter-benefits {
+        align-items: center;
+        gap: 0.8rem;
     }
 
-    .about-placeholder i {
-        font-size: 3rem;
+    .benefit-item {
+        font-size: 0.9rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .service-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .service-card p {
+        font-size: 0.95rem;
     }
 
     .products-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
     }
 
     .product-card.featured {
         transform: none;
     }
+
+    .product-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .product-description {
+        font-size: 0.95rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+
+    .instagram-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .instagram-cta .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 15px;
+        padding: 0 10px;
     }
 
     .nav-container {
-        padding: 1rem 15px;
+        padding: 0.8rem 10px;
+    }
+
+    .logo h2 {
+        font-size: 1.5rem;
+    }
+
+    .logo span {
+        font-size: 0.8rem;
     }
 
     .hero {
-        padding-top: 70px;
+        padding-top: 60px;
+        min-height: 90vh;
     }
 
     .hero-content {
-        padding: 0 15px;
+        padding: 0 10px;
+        gap: 1.5rem;
     }
 
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.1;
+        margin-bottom: 0.8rem;
     }
 
     .hero-text p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
     }
 
-    .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
+    .hero-buttons .btn {
+        padding: 0.9rem 1.2rem;
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
     }
 
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
     }
 
-    .service-card,
+    .section-header p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .about {
+        padding: 4rem 0;
+    }
+
+    .about-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+    }
+
+    .stats {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .stat h4 {
+        font-size: 1.8rem;
+    }
+
+    .stat p {
+        font-size: 0.9rem;
+    }
+
+    .services {
+        padding: 4rem 0;
+    }
+
+    .service-card {
+        padding: 1.2rem;
+    }
+
+    .service-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+    }
+
+    .service-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .service-icon i {
+        font-size: 1.5rem;
+    }
+
+    .products {
+        padding: 4rem 0;
+    }
+
+    .product-card h2 {
+        font-size: 1.1rem;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+    }
+
+    .product-features li {
+        font-size: 0.9rem;
+    }
+
+    .current-price {
+        font-size: 1.5rem;
+    }
+
+    .testimonials {
+        padding: 4rem 0;
+    }
+
+    .testimonial-card {
+        padding: 1.2rem;
+    }
+
+    .testimonial-content p {
+        font-size: 0.95rem;
+    }
+
+    .contact {
+        padding: 4rem 0;
+    }
+
     .contact-form-container {
-        padding: 1.5rem;
+        padding: 1.2rem;
+        margin: 0 10px;
     }
 
-    .hero-placeholder,
-    .about-placeholder {
-        width: 200px;
-        height: 200px;
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .form-label {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .newsletter {
+        padding: 3rem 0;
+    }
+
+    .newsletter-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .newsletter-text p {
+        font-size: 0.9rem;
+    }
+
+    .newsletter-form-container {
+        padding: 1.2rem;
+        margin: 0 10px;
+    }
+
+    .newsletter-form input {
+        padding: 1rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .newsletter-form .btn {
+        padding: 1rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .benefit-item {
+        font-size: 0.85rem;
+    }
+
+    .instagram {
+        padding: 3rem 0;
+    }
+
+    .instagram-grid {
+        gap: 1rem;
+        padding: 0 10px;
+    }
+
+    .post-image {
+        height: 180px;
+    }
+
+    .post-image i {
+        font-size: 2.5rem;
+    }
+
+    .post-content {
+        padding: 0.8rem;
+    }
+
+    .post-content p {
+        font-size: 0.9rem;
+    }
+
+    .instagram-cta .btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .footer-section h4 {
+        font-size: 1.1rem;
+    }
+
+    .footer-section p,
+    .footer-section li {
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-button {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-button a {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }
 
@@ -922,6 +1603,230 @@ body {
 
 .fade-in-up {
     animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Instagram Section */
+.instagram {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.instagram-feed-container {
+    margin-bottom: 3rem;
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.instagram-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #dc2626;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+.instagram-post-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.instagram-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.post-image {
+    height: 250px;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-image i {
+    font-size: 4rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.post-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.post-content {
+    padding: 1.5rem;
+}
+
+.post-content p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.post-date {
+    font-weight: 500;
+}
+
+.post-likes {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 500;
+}
+
+.instagram-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.instagram-cta .btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.instagram-cta .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(220, 39, 67, 0.3);
+}
+
+/* Real Instagram Post Styles */
+.instagram-post {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.instagram-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.instagram-post img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.instagram-post-content {
+    padding: 1.5rem;
+}
+
+.instagram-post-text {
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.instagram-post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #666;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1rem;
+}
+
+.instagram-post-date {
+    font-weight: 500;
+}
+
+.instagram-post-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.instagram-post-likes,
+.instagram-post-comments {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 500;
+}
+
+.instagram-post-likes i,
+.instagram-post-comments i {
+    color: #dc2626;
+}
+
+/* Instagram embed fallback */
+.instagram-embed-fallback {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    color: #666;
+}
+
+.instagram-embed-fallback i {
+    font-size: 3rem;
+    color: #dc2626;
+    margin-bottom: 1rem;
+}
+
+.instagram-embed-fallback h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.instagram-embed-fallback p {
+    margin-bottom: 1rem;
 }
 
 /* Scroll suave */
